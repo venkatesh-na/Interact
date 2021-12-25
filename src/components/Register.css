@@ -3,6 +3,7 @@
 }
 .register-section {
   width: 500px;
+  margin-top: 1.5rem;
 }
 .register-container form {
   display: grid;

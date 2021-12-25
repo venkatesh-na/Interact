@@ -8,6 +8,7 @@ const UpdatePost = ()=>{
     const [descriptionError,setdescriptionError] = useState("")
     const [updated,setUpdated] = useState(false)
     const [user,setUser] = useState(null)
+    const [loading,setLoading] = useState(false)
     const location = useLocation()
     const path = location.pathname.split("/")
     
@@ -58,6 +59,7 @@ const UpdatePost = ()=>{
         } 
         else
         {
+            setLoading(true)
             fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-1]}`,{
                 method:"PATCH",
                 headers:{
@@ -67,6 +69,7 @@ const UpdatePost = ()=>{
             })
             .then(res => res.json())
             .then(data =>{
+                setLoading(false)
                 setUpdated(true)
                 setTimeout(()=>{
                     setUpdated(false)
@@ -87,7 +90,7 @@ const UpdatePost = ()=>{
                 <textarea value = {updateData.description} onChange = {(e)=>setupdateData({...updateData,description:e.target.value})} placeholder="Description">
                 </textarea>
                 {descriptionError && <p className = "addpostError">{descriptionError}</p>}
-                <button type = "submit" onClick={handleUpdate}>update</button>
+                <button type = "submit" onClick={handleUpdate}>{loading ? "Loading..." : "update"}</button>
             </form>
              {user &&
             <div className = "toHome">

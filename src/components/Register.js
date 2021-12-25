@@ -9,11 +9,13 @@ const Register = ()=>{
     const [passwordError,setpasswordError] = useState("")
     const [firstlastError,setfirstlastError] = useState("") 
     const [success,setSuccess] = useState(false)
+    const [loading,setLoading] = useState(false)
     const navigate = useNavigate()
     const handleRegister = (e)=>{
             e.preventDefault()
             if(input.email.match(/([a-zA-Z0-9_.-]+)@([a-zA-Z]+)([\.])([a-zA-Z]+)/g) && input.password.match(/(^[A-Z])[a-z]+(@|#|&|!|\.\?)\d{2,}$/g) && input.firstName.length > 1 && input.lastName.length > 1)
             {
+                setLoading(true)
             fetch("https://interact-app-1.herokuapp.com/register",{
                 method:"POST",
                 headers:{
@@ -23,11 +25,12 @@ const Register = ()=>{
             })
             .then(res => res.json())
             .then(data => {
+                setLoading(false)
                 setSuccess(true)
                 setInput({firstName:"",lastName:"",bio:"",email:"",password:""})
                 setTimeout(()=>{
                     navigate("/login")
-                },3000)
+                },2000)
             })
             .catch(err=>console.log(err))
         }
@@ -66,7 +69,7 @@ const Register = ()=>{
                     <textarea value = {input.bio} onChange = {(e)=>setInput({...input,bio:e.target.value})}placeholder="Bio(optional)" form = "register-id"/>
                     <input value = {input.email} onChange = {(e)=>setInput({...input,email:e.target.value})} type = "email" placeholder="Email"/>
                     <input value = {input.password} onChange = {(e)=>setInput({...input,password:e.target.value})}type = "text" placeholder="Password"/>
-                    <button type = "submit" onClick = {(e)=>handleRegister(e)}>Register</button>
+                    <button type = "submit" onClick = {(e)=>handleRegister(e)}>{loading ? "Loading..." : "Register"}</button>
                 </form>
                 <p>Already Registered?<Link to = "/login">Login Now</Link></p>
             </div>

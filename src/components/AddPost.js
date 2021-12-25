@@ -8,6 +8,7 @@ const AddPost = ()=>{
     const [descriptionError,setdescriptionError] = useState("")
     const [posted,setPosted] = useState(false)
     const [user,setUser] = useState(null)
+    const [loading,setLoading] = useState(false)
    const location = useLocation()
    const path = location.pathname.split("/")
     const handleaddPost = (e)=>{
@@ -41,6 +42,7 @@ const AddPost = ()=>{
         }   
         else
         {
+            setLoading(true)
             fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-2]}/${path[path.length-1]}`,{
                 method:"POST",
                 headers:{
@@ -50,6 +52,7 @@ const AddPost = ()=>{
             })
             .then(res => res.json())
             .then(data => {
+                setLoading(false)
                 setPosted(true)
                 setTimeout(()=>{
                     setPosted(false)
@@ -77,7 +80,7 @@ const AddPost = ()=>{
                 <textarea value = {addInput.description} onChange = {(e)=>setaddInput({...addInput,description:e.target.value})} placeholder="Description">
                 </textarea>
                 {descriptionError && <p className = "addpostError">{descriptionError}</p>}
-                <button type = "submit" onClick = {(e)=>handleaddPost(e)}>Add Post</button>
+                <button type = "submit" onClick = {(e)=>handleaddPost(e)}>{loading ? "Loading..." : "Add Post"}</button>
             </form>
             {user &&
             <div className = "toHome">

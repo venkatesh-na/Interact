@@ -12,7 +12,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 1rem;
   width: 100%;
 }
 .login-container h1 {
@@ -26,6 +25,7 @@
   border: none;
   outline: none;
   box-shadow: 0px 0px 1px 1px rgb(118, 118, 118);
+  margin-bottom: 1rem;
 }
 .login-container form input:focus {
   box-shadow: 0px 0px 1.5px 1.5px var(--main-color);

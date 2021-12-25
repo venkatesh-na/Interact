@@ -13,7 +13,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 1rem;
 }
 .addPost input {
   padding: 10px 20px;
@@ -21,6 +20,7 @@
   border: none;
   outline: none;
   box-shadow: 0px 0px 1px 1px grey;
+  margin-bottom: 1rem;
 }
 .addPost input:focus,
 .addPost textarea:focus {
@@ -35,6 +35,7 @@
   border: none;
   outline: none;
   box-shadow: 0px 0px 1px 1px grey;
+  margin-bottom: 1rem;
 }
 .addPost button {
   padding: 8px 20px;

@@ -6,6 +6,7 @@ const Login = ()=>{
     const [loginInput,setloginInput] = useState({email:"",password:""})
     const [loginError,setloginError] = useState(null)
     const [loginsucess,setloginSucess] = useState(false)
+    const [loading,setLoading] = useState(false)
     const navigate = useNavigate()
     const handleLogin = (e)=>{
         e.preventDefault()
@@ -13,6 +14,7 @@ const Login = ()=>{
         loginInput.password.match(/(^[A-Z])[a-z]+(@|#|&|!|\.\?)\d{2,}$/g))
         {
             setloginError(null)
+            setLoading(true)
             fetch("https://interact-app-1.herokuapp.com/login",
             {
                 method:"POST",
@@ -23,6 +25,7 @@ const Login = ()=>{
             })
             .then(res => res.json())
             .then(data => {
+                setLoading(false)
                 if(data.length === 0)
                 {
                     setloginError({error:"Email or password does not match"})
@@ -33,7 +36,7 @@ const Login = ()=>{
                     setloginSucess(true)
                     setTimeout(()=>{
                         navigate(`/user/${data[0].email}/${data[0].password}`)
-                    },3000)
+                    },2000)
                 }
             })
             .catch(err => {
@@ -59,7 +62,7 @@ const Login = ()=>{
                 <form>
                     <input onChange = {(e)=>setloginInput({...loginInput,email:e.target.value})} type = "text" placeholder="Email"/>
                     <input onChange = {(e)=>setloginInput({...loginInput,password:e.target.value})} type = "password" placeholder="Password"/>
-                    <button type = "submit" onClick={(e)=>handleLogin(e)}>LOGIN</button>
+                    <button type = "submit" onClick={(e)=>handleLogin(e)}>{loading ? "Loading..." : "LOGIN"}</button>
                 </form>
                 <p>Not Registered?<Link to = "/Register">Register Now</Link></p>
             </div>
