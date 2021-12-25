@@ -1,0 +1,83 @@
+.update-post-section,
+.post-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.addPost {
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+}
+.addPost input {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 1px 1px grey;
+}
+.addPost input:focus,
+.addPost textarea:focus {
+  box-shadow: 0px 0px 1.5px 1.5px var(--main-color);
+  background-color: var(--input-focus);
+}
+.addPost textarea {
+  resize: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  height: 120px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 1px 1px grey;
+}
+.addPost button {
+  padding: 8px 20px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: var(--main-color);
+  color: white;
+}
+.addPost button:hover {
+  background-color: rgb(116, 37, 136);
+}
+.addPost button:active {
+  transform: scale(0.9);
+}
+.addpostError {
+  color: red;
+  font-weight: 500;
+}
+.toHome {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+.toHome button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+.toHome button:hover {
+  color: black;
+}
+.toHome button:active {
+  color: rgb(60, 21, 68);
+}
+@media screen and (max-width: 500px) {
+  .update-post-section form,
+  .post-container form {
+    padding: 0 10px;
+  }
+  .addPost {
+    width: 100%;
+  }
+}

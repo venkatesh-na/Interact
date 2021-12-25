@@ -1,0 +1,222 @@
+.user-section {
+  padding: 10px;
+  width: 98vw;
+  height: 98vh;
+}
+.inner-user-section {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 1rem;
+}
+.profile-add div:first-child {
+  padding: 1rem;
+  box-shadow: 0px 0px 0.5px 0.5px black;
+  background-color: var(--input-focus);
+}
+.profile-add h1 {
+  font-size: 35px;
+}
+.profile-add p {
+  font-size: 20px;
+}
+.profile-add button {
+  padding: 5px 20px;
+  align-self: center;
+  font-size: 1rem;
+  width: 100%;
+  text-transform: uppercase;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  background-color: var(--main-color);
+  color: white;
+}
+.profile-add button:hover {
+  background-color: rgb(116, 37, 136);
+}
+.profile-add button:active {
+  transform: scale(0.9);
+}
+.posts {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.posts > div:nth-child(1) {
+  width: 100%;
+  justify-self: flex-start;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+  box-shadow: 0px 0px 0.5px 0.5px black;
+  background-color: var(--input-focus);
+}
+.posts .post-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.post-div > div {
+  width: 300px;
+  box-shadow: 0px 0px 0.5px 0.5px black;
+}
+.post-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  border-width: 0px 0px 1px 0px;
+  padding: 5px;
+  background-color: var(--input-focus);
+}
+.post-header .profile {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(174, 231, 255);
+  margin-right: 10px;
+}
+.post-main-content {
+  padding: 5px;
+}
+.post-main-content h3 {
+  color: rgba(0, 0, 0, 0.719);
+  text-transform: uppercase;
+}
+.post-main-content p:nth-child(3) {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.397);
+}
+.post-main-content p:nth-child(2) {
+  font-size: 15px;
+}
+.post-buttons {
+  padding: 5px 10px 10px 10px;
+}
+.post-buttons button {
+  padding: 2px 15px;
+}
+.post-buttons > button:nth-child(1) {
+  margin-right: 10px;
+}
+.post-buttons > button:nth-child(1) {
+  background-color: white;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 1px 1px rgb(196, 31, 31);
+  color: rgb(196, 31, 31);
+}
+.post-buttons > button:nth-child(1):hover {
+  background-color: rgb(196, 31, 31);
+  color: white;
+}
+.post-buttons a button {
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 1px 1px rgb(34, 132, 173);
+  color: rgb(34, 132, 173);
+}
+.post-buttons a button:hover {
+  background-color: rgb(34, 132, 173);
+  color: white;
+}
+.post-buttons a button:active,
+.post-buttons > button:nth-child(1):active {
+  transform: scale(0.9);
+}
+.post-add {
+  min-width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none !important;
+}
+.post-add button {
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  color: rgb(41, 41, 41);
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background-color: white;
+  box-shadow: 0px 0px 1px 1px black;
+}
+.post-add button:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+.post-add button:hover {
+  transform: scale(0.9);
+}
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--input-focus);
+  box-shadow: 0px 0px 0.5px 0.5px black;
+  margin-bottom: 10px;
+  padding: 0.5rem 1rem;
+  font-size: 25px;
+  color: var(--main-color);
+}
+nav button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  color: var(--main-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav button:hover {
+  color: black;
+  box-shadow: 0px 0px 5px var(--main-color), 0px 0px 15px var(--main-color);
+}
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.login-link,
+.register-link {
+  color: var(--main-color);
+  display: block;
+  text-decoration: none;
+}
+.login-link:hover,
+.register-link:hover {
+  color: rgb(52, 9, 63);
+}
+
+@media screen and (max-width: 500px) {
+  .inner-user-section {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .posts .post-div {
+    justify-content: center;
+  }
+  .post-div > div {
+    width: 98%;
+  }
+  .auth {
+    margin-top: 10px;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+  .login-link {
+    margin-right: 10px;
+  }
+}

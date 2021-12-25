@@ -1,0 +1,89 @@
+.login-section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+  width: 450px;
+}
+.login-container form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.login-container h1 {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.login-container form input {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 1px 1px rgb(118, 118, 118);
+}
+.login-container form input:focus {
+  box-shadow: 0px 0px 1.5px 1.5px var(--main-color);
+  outline: none;
+  background-color: var(--input-focus);
+}
+.login-container button {
+  padding: 8px 20px;
+  align-self: center;
+  font-size: 1rem;
+  width: 150px;
+  border: none;
+  background-color: var(--main-color);
+  color: white;
+}
+.login-container button:hover {
+  background-color: rgb(116, 37, 136);
+}
+.login-container button:active {
+  transform: scale(0.9);
+}
+.login-container > p {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+.error {
+  position: relative;
+  background-color: rgb(255, 241, 241);
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error_sidebar {
+  position: absolute;
+  background-color: rgb(255, 125, 125);
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+}
+.error p {
+  width: 100%;
+  color: rgb(255, 64, 64);
+  padding-left: 15px;
+}
+@media screen and (max-width: 500px) {
+  .error {
+    width: 98%;
+  }
+  .login-section {
+    width: 100%;
+    padding: 20px;
+  }
+  .login-container {
+    width: 100%;
+  }
+  .login-container form {
+    width: 100%;
+  }
+}
