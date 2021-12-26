@@ -60,25 +60,66 @@ const UpdatePost = ()=>{
         else
         {
             setLoading(true)
+            //get post data of user - to fetch specific global data
             fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-1]}`,{
-                method:"PATCH",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify(updateData)  
+                method:"GET"
             })
             .then(res => res.json())
-            .then(data =>{
-                setLoading(false)
-                setUpdated(true)
-                setTimeout(()=>{
-                    setUpdated(false)
-                },3000)
-                setupdateData({title:"",description:""})
-                settitleError("")
-                setdescriptionError("")
+            .then(data => {
+                //fetching id of specific user from global with help of above data
+                console.log(data)
+                fetch(`https://interact-app-1.herokuapp.com/globaldata`,{
+                    headers:{
+                        "Accept":"application/json",
+                        "Content-Type":"application/json"
+                    },
+                    method:"POST",
+                    body:JSON.stringify({
+                        date:`${data.date}`,
+                        title:`${data.title}`,
+                        description:`${data.description}`
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    //from fetched id updating specific global data
+                    console.log(data)//returning an empty object intead of object with content
+                    fetch(`https://interact-app-1.herokuapp.com/globaldata/update/${data[0]._id}`,{
+                        method:"PATCH",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify(updateData)
+                    })
+                    .then(res => res.json())
+                    .then(data =>{
+                        fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-1]}`,{
+                        method:"PATCH",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify(updateData)  
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            setLoading(false)
+                            setUpdated(true)
+                            setTimeout(()=>{
+                                setUpdated(false)
+                            },3000)
+                            setupdateData({title:"",description:""})
+                            settitleError("")
+                            setdescriptionError("")
+                        })
+                        .catch(err => console.log(err))
+                    })
+                    .catch(err => console.log(err))
+                })
+                .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
+         
         }
     }
     return (
