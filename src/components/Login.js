@@ -16,6 +16,7 @@ const Login = ()=>{
             setloginError(null)
             setLoading(true)
             fetch(`https://interact-2.herokuapp.com/login`,{
+                mode:"cors",
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
