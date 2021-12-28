@@ -15,11 +15,10 @@ const Login = ()=>{
         {
             setloginError(null)
             setLoading(true)
-            fetch("https://interact-app-1.herokuapp.com/login",
-            {
+            fetch(`https://interact-2.herokuapp.com/login`,{
                 method:"POST",
                 headers:{
-                "Content-Type":"application/json"
+                    "Content-Type":"application/json"
                 },
                 body:JSON.stringify(loginInput)
             })

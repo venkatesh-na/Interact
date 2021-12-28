@@ -12,14 +12,14 @@ const Global = ()=>{
     const path = location.pathname.split("/")
     useEffect(()=>{
         setLoading(true)
-        fetch(`https://interact-app-1.herokuapp.com/users/${path[path.length-1]}`)
+        fetch(`https://interact-2.herokuapp.com/users/${path[path.length-1]}`)
         .then(res => res.json())
         .then(data => {
             setUser({email:data[0].email,password:data[0].password})
         })
         .catch(err => console.log(err))
 
-        fetch("https://interact-app-1.herokuapp.com/global")
+        fetch("https://interact-2.herokuapp.com/global")
         .then(res => res.json())
         .then(data => {
             setLoading(false)

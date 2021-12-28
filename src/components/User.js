@@ -11,7 +11,7 @@ const User = ()=>{
     const path = location.pathname.split("/")
     useEffect(()=>{
     setLoading(true)
-    fetch(`https://interact-app-1.herokuapp.com/user/${path[path.length-2]}/${path[path.length-1]}`)
+    fetch(`https://interact-2.herokuapp.com/user/${path[path.length-2]}/${path[path.length-1]}`)
     .then(res => res.json())
     .then(data =>{
         setUser(data)
@@ -22,12 +22,12 @@ const User = ()=>{
 },[deleted])
     const handleDelete = (userId,postId)=>{
         let title,description;
-        fetch(`https://interact-app-1.herokuapp.com/post/${postId}`)
+        fetch(`https://interact-2.herokuapp.com/post/${postId}`)
             .then(res => res.json())
             .then(data => {
                 title = data.title
                 description = data.description
-                        fetch(`https://interact-app-1.herokuapp.com/post/${userId}/${postId}`,{
+                        fetch(`https://interact-2.herokuapp.com/post/${userId}/${postId}`,{
                             method:"PATCH",
                             headers:{
                                 "Content-Type":"application/json"
@@ -35,7 +35,7 @@ const User = ()=>{
                         })
                         .then(res => res.json())
                         .then(data => {
-                            fetch("https://interact-app-1.herokuapp.com/globaldelete",{
+                            fetch("https://interact-2.herokuapp.com/globaldelete",{
                                 method:"DELETE",
                                 headers:{
                                     "Content-Type":"application/json"

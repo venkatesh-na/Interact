@@ -16,7 +16,7 @@ const Register = ()=>{
             if(input.email.match(/([a-zA-Z0-9_.-]+)@([a-zA-Z]+)([\.])([a-zA-Z]+)/g) && input.password.match(/(^[A-Z])[a-z]+(@|#|&|!|\.\?)\d{2,}$/g) && input.firstName.length > 1 && input.lastName.length > 1)
             {
                 setLoading(true)
-            fetch("https://interact-app-1.herokuapp.com/register",{
+            fetch("https://interact-2.herokuapp.com/register",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"

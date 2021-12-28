@@ -43,7 +43,7 @@ const AddPost = ()=>{
         else
         {
             setLoading(true)
-            fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-2]}/${path[path.length-1]}`,{
+            fetch(`https://interact-2.herokuapp.com/post/${path[path.length-2]}/${path[path.length-1]}`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -65,7 +65,7 @@ const AddPost = ()=>{
             }
         }
        useEffect(()=>{
-        fetch(`https://interact-app-1.herokuapp.com/users/${path[path.length-1]}`)
+        fetch(`https://interact-2.herokuapp.com/users/${path[path.length-1]}`)
         .then(res => res.json())
         .then(data => {
             setUser({email:data[0].email,password:data[0].password})

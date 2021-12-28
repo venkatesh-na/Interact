@@ -14,11 +14,11 @@ const UpdatePost = ()=>{
     
     useEffect(()=>{
         let isMounted = true
-        fetch(`https://interact-app-1.herokuapp.com/users/${path[path.length-2]}`)
+        fetch(`https://interact-2.herokuapp.com/users/${path[path.length-2]}`)
         .then(res => res.json())
         .then(data => {
             setUser({email:data[0].email,password:data[0].password})
-            fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-1]}`)
+            fetch(`https://interact-2.herokuapp.com/post/${path[path.length-1]}`)
             .then(res => res.json())
             .then(data => {
                 setupdateData({title:data.title,description:data.description})
@@ -61,14 +61,14 @@ const UpdatePost = ()=>{
         {
             setLoading(true)
             //get post data of user - to fetch specific global data
-            fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-1]}`,{
+            fetch(`https://interact-2.herokuapp.com/post/${path[path.length-1]}`,{
                 method:"GET"
             })
             .then(res => res.json())
             .then(data => {
                 //fetching id of specific user from global with help of above data
                 console.log(data)
-                fetch(`https://interact-app-1.herokuapp.com/globaldata`,{
+                fetch(`https://interact-2.herokuapp.com/globaldata`,{
                     headers:{
                         "Accept":"application/json",
                         "Content-Type":"application/json"
@@ -84,7 +84,7 @@ const UpdatePost = ()=>{
                 .then(data => {
                     //from fetched id updating specific global data
                     console.log(data)//returning an empty object intead of object with content
-                    fetch(`https://interact-app-1.herokuapp.com/globaldata/update/${data[0]._id}`,{
+                    fetch(`https://interact-2.herokuapp.com/globaldata/update/${data[0]._id}`,{
                         method:"PATCH",
                         headers:{
                             "Content-Type":"application/json"
@@ -93,7 +93,7 @@ const UpdatePost = ()=>{
                     })
                     .then(res => res.json())
                     .then(data =>{
-                        fetch(`https://interact-app-1.herokuapp.com/post/${path[path.length-1]}`,{
+                        fetch(`https://interact-2.herokuapp.com/post/${path[path.length-1]}`,{
                         method:"PATCH",
                         headers:{
                             "Content-Type":"application/json"
