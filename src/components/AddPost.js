@@ -80,7 +80,7 @@ const AddPost = ()=>{
                 <textarea value = {addInput.description} onChange = {(e)=>setaddInput({...addInput,description:e.target.value})} placeholder="Description">
                 </textarea>
                 {descriptionError && <p className = "addpostError">{descriptionError}</p>}
-                <button type = "submit" onClick = {(e)=>handleaddPost(e)}>{loading ? "Loading..." : "Add Post"}</button>
+                <button type = "submit" disabled = {loading ? true : false} onClick = {(e)=>handleaddPost(e)}>{loading ? "Loading..." : "Add Post"}</button>
             </form>
             {user &&
             <div className = "toHome">

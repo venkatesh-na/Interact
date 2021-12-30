@@ -131,7 +131,7 @@ const UpdatePost = ()=>{
                 <textarea value = {updateData.description} onChange = {(e)=>setupdateData({...updateData,description:e.target.value})} placeholder="Description">
                 </textarea>
                 {descriptionError && <p className = "addpostError">{descriptionError}</p>}
-                <button type = "submit" onClick={handleUpdate}>{loading ? "Loading..." : "update"}</button>
+                <button type = "submit" disabled = {loading ? true : false} onClick={handleUpdate}>{loading ? "Loading..." : "update"}</button>
             </form>
              {user &&
             <div className = "toHome">

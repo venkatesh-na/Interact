@@ -62,7 +62,7 @@ const Login = ()=>{
                 <form>
                     <input onChange = {(e)=>setloginInput({...loginInput,email:e.target.value})} type = "text" placeholder="Email"/>
                     <input onChange = {(e)=>setloginInput({...loginInput,password:e.target.value})} type = "password" placeholder="Password"/>
-                    <button type = "submit" onClick={(e)=>handleLogin(e)}>{loading ? "Loading..." : "LOGIN"}</button>
+                    <button type = "submit" disabled = {loading ? true :  false}  onClick={(e)=>handleLogin(e)}>{loading ? "Loading..." : "LOGIN"}</button>
                 </form>
                 <p>Not Registered?<Link to = "/Register">Register Now</Link></p>
             </div>

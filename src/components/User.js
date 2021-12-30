@@ -8,6 +8,7 @@ const User = ()=>{
     const [deleted,setDeleted] = useState(false)
     const location = useLocation()
     const [loading,setLoading] = useState(false)
+    const [deleteLoading,setdeleteLoading] = useState(false)
     const path = location.pathname.split("/")
     useEffect(()=>{
     setLoading(true)
@@ -22,6 +23,7 @@ const User = ()=>{
 },[deleted])
     const handleDelete = (userId,postId)=>{
         let title,description;
+        setdeleteLoading(true)
         fetch(`https://interact-2.herokuapp.com/post/${postId}`)
             .then(res => res.json())
             .then(data => {
@@ -45,6 +47,7 @@ const User = ()=>{
                             .then(res => res.json())
                             .then(data => {
                                 setDeleted(true)
+                                setdeleteLoading(false)
                             })
                             .catch(err => console.log(err))
                         })
@@ -111,10 +114,10 @@ const User = ()=>{
                                                 <p>{date}</p>
                                             </div>
                                             <div className = "post-buttons">
-                                                <button onClick = {()=>handleDelete(userId,_id)}><FaTrashAlt/></button>
+                                                <button disabled = {deleteLoading ? true : false} onClick = {()=>handleDelete(userId,_id)}>{deleteLoading ? "---" : <FaTrashAlt/>}</button>
                                                 <Link to = {`/updatePost/${userId}/${_id}`}>
                                                     <button>
-                                                        <FaEdit/>
+                                                       <FaEdit/>
                                                     </button>
                                                 </Link>
                                             </div>

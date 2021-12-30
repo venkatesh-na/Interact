@@ -69,7 +69,7 @@ const Register = ()=>{
                     <textarea value = {input.bio} onChange = {(e)=>setInput({...input,bio:e.target.value})}placeholder="Bio(optional)" form = "register-id"/>
                     <input value = {input.email} onChange = {(e)=>setInput({...input,email:e.target.value})} type = "email" placeholder="Email"/>
                     <input value = {input.password} onChange = {(e)=>setInput({...input,password:e.target.value})}type = "text" placeholder="Password"/>
-                    <button type = "submit" onClick = {(e)=>handleRegister(e)}>{loading ? "Loading..." : "Register"}</button>
+                    <button type = "submit" disabled = {loading ? true : false} onClick = {(e)=>handleRegister(e)}>{loading ? "Loading..." : "Register"}</button>
                 </form>
                 <p>Already Registered?<Link to = "/login">Login Now</Link></p>
             </div>
